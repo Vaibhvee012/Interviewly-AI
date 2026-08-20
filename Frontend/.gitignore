@@ -1,0 +1,4 @@
+node_modules/
+dist/
+src/features/interview/
+.env
