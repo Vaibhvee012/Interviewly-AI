@@ -8,18 +8,6 @@
   Analyze your resume and target job description to generate personalized interview questions, skill-gap analysis, and a structured preparation plan.
 </p>
 
-<p align="center">
-
-</p>
-
-<p align="center">
-
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black)
-![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge\&logo=jsonwebtokens\&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge\&logo=vite\&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge\&logo=github\&logoColor=white)
-
-</p>
 
 ---
 
