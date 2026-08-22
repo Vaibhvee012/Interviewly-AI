@@ -221,15 +221,26 @@ a{
 }
 
 .loading-container {
-    min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    background-color: #0d1117;
+    height: 100vh;
+}
+.loading-container h2 {
+  color:rgba(248, 177, 121); 
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  text-shadow: 0 0 10px rgba(255, 140, 0, 0.6), 
+               0 0 20px rgba(255, 140, 0, 0.4);
 }
 
 .loading-dots {
-    display: flex;
-    gap: 4px;
+  display: flex;
+  gap: 10px;
+  color: #ff8c00; /* Optional: matches the dots to the orange theme */
 }
 
 .loading-dots span {

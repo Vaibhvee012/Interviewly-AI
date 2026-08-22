@@ -1,56 +1,28 @@
-import axios from 'axios'
+import axios from "axios"
 
 const api = axios.create({
     baseURL: "http://localhost:3000",
     withCredentials: true
 })
 
-export async function register({ email, username, password }) {
-    try {
-        const response = await api.post("/api/auth/register", {
-            username,
-            email,
-            password
-        })
-
-        return response.data
-    } catch (err) {
-        console.log(err)
-        throw err
-    }
+export const login = async ({ email, password }) => {
+    const response = await api.post("/api/auth/login", { email, password })
+    return response.data
 }
 
-export async function login({ email, password }) {
-    try {
-        const response = await api.post("/api/auth/login", {
-            email,
-            password
-        })
-
-        return response.data
-    } catch (err) {
-        console.log(err)
-        throw err
-    }
+export const register = async ({ username, email, password }) => {
+    const response = await api.post("/api/auth/register", { username, email, password })
+    return response.data
 }
 
-export async function logout() {
-    try {
-        const response = await api.post("/api/auth/logout")
-
-        return response.data
-    } catch (err) {
-        console.log(err)
-        throw err
-    }
+export const logout = async () => {
+    const response = await api.post("/api/auth/logout")
+    return response.data
 }
 
-export async function getMe() {
-    try {
-        const response = await api.get("/api/auth/get-me")
-        return response.data
-    } catch (err) {
-        console.log(err)
-        throw err
-    }
+export const getMe = async () => {
+    const response = await api.get("/api/auth/get-me")
+    return response.data
 }
+
+export default api
