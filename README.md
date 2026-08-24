@@ -1,7 +1,3 @@
-Absolutely. For **Interviewly AI**, I’d make the README look like a proper production-level project rather than a basic college-project README.
-
-You can replace your current `README.md` with this:
-
 # Interviewly AI
 
 > An AI-powered interview preparation and assessment platform that helps candidates practice interviews, receive intelligent feedback, and improve their interview performance.
