@@ -1,260 +1,205 @@
 # Interviewly AI
 
-<p align="center">
-  <strong>AI-Powered Interview Preparation Platform</strong>
-</p>
+Interviewly AI is an AI-powered meeting and interview analysis platform that transforms recorded conversations into structured, actionable insights.
 
-<p align="center">
-  Analyze your resume and target job description to generate personalized interview questions, skill-gap analysis, and a structured preparation plan.
-</p>
-
-
----
+The application allows users to upload meeting or interview recordings, automatically generate transcripts, and use an LLM to extract summaries, key decisions, and actionable tasks. Processed meetings are stored and can be accessed through a centralized dashboard.
 
 ## Overview
 
-Interviewly AI is a full-stack AI-powered interview preparation platform designed to help candidates prepare for technical and behavioral interviews.
+Interviewly AI is designed to reduce the time required to manually review lengthy meetings and interviews.
 
-The platform analyzes a candidate's **resume or self-description** against a **target job description** and generates a personalized interview preparation report.
+The application follows an automated processing pipeline:
 
-The generated report includes technical questions, behavioral questions, skill-gap analysis, a job-match score, and a structured preparation plan.
+```text
+Audio / Meeting Recording
+          |
+          v
+     File Upload
+          |
+          v
+   Speech-to-Text (ASR)
+          |
+          v
+       Transcript
+          |
+          v
+      LLM Analysis
+          |
+          v
+Structured Meeting Data
+          |
+          +-------------------+
+          |                   |
+          v                   v
+       Dashboard         Meeting Details
+```
 
----
+The system converts unstructured audio into structured information that can be quickly reviewed and acted upon.
 
-## Key Features
+## Core Features
 
-### Authentication
+### Audio Upload
 
-* User registration and login
-* JWT-based authentication
-* HTTP cookie-based authentication
-* Protected routes
-* Logout functionality
-* Token blacklisting
+Users can upload recorded meetings or interviews in supported audio formats such as:
 
-### Resume & Profile Analysis
+* MP3
+* WAV
+* M4A
 
-* Upload PDF or DOCX resumes
-* Provide a self-description as an alternative
-* Analyze candidate experience and technical skills
-* Compare candidate profile with job requirements
+The backend handles the uploaded file and initiates the processing pipeline.
 
-### AI-Powered Interview Generation
+### Automatic Transcription
 
-Interviewly AI generates customized interview preparation material including:
+Audio recordings are converted into text using a speech-to-text model.
 
-* Technical interview questions
-* Behavioral interview questions
-* Skill-gap analysis
-* Job compatibility score
-* Day-by-day preparation plan
-* Personalized interview strategy
+The generated transcript is stored alongside the corresponding meeting record.
 
-### Interview Reports
+### AI-Powered Summarization
 
-* View generated interview plans
-* Access previous reports
-* View individual interview reports
-* Track job-match scores
-* Generate personalized preparation strategies
+The transcript is processed using a Large Language Model to generate a concise and structured summary.
 
-### Modern Frontend
+### Key Decisions
 
-* Responsive React interface
-* Component-based architecture
-* React Router navigation
-* Axios API integration
-* SCSS-based styling
-* Loading states and interactive UI
+The system identifies important decisions discussed during the meeting, allowing users to review the outcomes without going through the complete transcript.
 
----
+### Action Items
+
+Interviewly AI extracts actionable tasks from the conversation.
+
+Each action item can contain:
+
+* Task
+* Assignee
+* Deadline
+
+This makes it easier to convert meeting discussions into follow-up work.
+
+### Meeting Dashboard
+
+The dashboard provides an overview of processed meetings and allows users to access previously generated results.
+
+### Meeting Details
+
+Each meeting contains its associated:
+
+* Summary
+* Transcript
+* Key decisions
+* Action items
+* Processing information
 
 ## Technology Stack
 
 ### Frontend
 
-| Technology   | Purpose                    |
-| ------------ | -------------------------- |
-| React.js     | User interface             |
-| JavaScript   | Application logic          |
-| React Router | Client-side routing        |
-| Axios        | API communication          |
-| SCSS         | Styling                    |
-| Vite         | Development and build tool |
+* React
+* Vite
+* React Router
+* Axios
+* CSS
 
 ### Backend
 
-| Technology | Purpose             |
-| ---------- | ------------------- |
-| Node.js    | Server-side runtime |
-| Express.js | REST API framework  |
-| MongoDB    | Database            |
-| Mongoose   | MongoDB ODM         |
-| JWT        | Authentication      |
-| bcryptjs   | Password hashing    |
-| Multer     | File uploads        |
+* Node.js
+* Express.js
+* REST APIs
+* Multer for file uploads
 
-### AI & Development Tools
+### AI
 
-| Technology        | Purpose                                     |
-| ----------------- | ------------------------------------------- |
-| Google Gemini API | AI-powered analysis and question generation |
-| Git               | Version control                             |
-| GitHub            | Source code management                      |
-| Postman           | API testing                                 |
-| Vercel            | Frontend deployment                         |
-| Render            | Backend deployment                          |
+* Speech-to-Text / Whisper
+* Large Language Model API
 
----
+### Database
 
-## System Architecture
+* MongoDB
+* MongoDB Atlas
+
+## Project Architecture
 
 ```text
-                         +----------------------+
-                         |       User           |
-                         +----------+-----------+
-                                    |
-                                    v
-                         +----------------------+
-                         |   React Frontend     |
-                         |      + Vite          |
-                         +----------+-----------+
-                                    |
-                              REST API / Axios
-                                    |
-                                    v
-                         +----------------------+
-                         |   Express Backend    |
-                         +----------+-----------+
-                                    |
-                  +-----------------+-----------------+
-                  |                 |                 |
-                  v                 v                 v
-           +-------------+   +-------------+   +-------------+
-           |    JWT      |   |  MongoDB    |   |   Multer    |
-           |    Auth     |   |  Database   |   | File Upload |
-           +-------------+   +-------------+   +-------------+
-                                    |
-                                    v
-                         +----------------------+
-                         |    Gemini AI API     |
-                         +----------+-----------+
-                                    |
-                                    v
-                         +----------------------+
-                         | Interview Report     |
-                         | - Questions          |
-                         | - Skill Gaps         |
-                         | - Match Score        |
-                         | - Preparation Plan   |
-                         +----------------------+
+Interviewly AI
+|
+├── Frontend
+|   ├── Authentication
+|   ├── Dashboard
+|   ├── Meeting Upload
+|   ├── Meeting History
+|   └── Meeting Details
+|
+├── Backend
+|   ├── REST API
+|   ├── File Upload
+|   ├── Speech-to-Text Processing
+|   ├── LLM Processing
+|   └── Database Operations
+|
+└── Database
+    └── MongoDB
 ```
 
----
+## Application Workflow
+
+### 1. Upload
+
+The user uploads a meeting or interview recording through the React application.
+
+### 2. File Processing
+
+The backend receives the file using a REST API and handles the uploaded audio.
+
+### 3. Transcription
+
+The audio is sent to the speech-to-text service and converted into a transcript.
+
+### 4. AI Analysis
+
+The transcript is passed to the LLM with a structured prompt.
+
+The model extracts:
+
+* Meeting summary
+* Key decisions
+* Action items
+* Assignees
+* Deadlines
+
+### 5. Data Storage
+
+The generated results and transcript are stored in MongoDB.
+
+### 6. Dashboard
+
+The frontend retrieves the processed meeting information through the backend API and displays it in the dashboard.
 
 ## Project Structure
 
 ```text
-Interviewly AI/
-│
-├── Backend/
+Interviewly-AI/
+|
+├── frontend/
 │   ├── src/
-│   │   ├── config/
-│   │   ├── controllers/
-│   │   ├── middlewares/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   └── services/
-│   │
-│   ├── server.js
-│   ├── package.json
-│   └── .env
-│
-├── Frontend/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── hooks/
+│   │   └── App.jsx
 │   ├── public/
-│   │
-│   ├── src/
-│   │   ├── features/
-│   │   │   ├── auth/
-│   │   │   ├── interview/
-│   │   │   └── landing/
-│   │   │
-│   │   ├── app.routes.jsx
-│   │   └── main.jsx
-│   │
 │   ├── package.json
 │   └── vite.config.js
 │
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   ├── services/
+│   ├── uploads/
+│   ├── server.js
+│   └── package.json
+│
 └── README.md
 ```
-
----
-
-## Application Workflow
-
-```text
-User Registration / Login
-          |
-          v
-   Authentication
-          |
-          v
-   Enter Job Description
-          |
-          +--------------------+
-          |                    |
-          v                    v
-   Upload Resume       Self Description
-          |                    |
-          +---------+----------+
-                    |
-                    v
-             Backend API
-                    |
-                    v
-            Profile Analysis
-                    |
-                    v
-              Gemini AI
-                    |
-                    v
-          Interview Report
-                    |
-       +------------+------------+
-       |            |            |
-       v            v            v
- Technical     Behavioral    Skill Gap
- Questions     Questions      Analysis
-       |            |            |
-       +------------+------------+
-                    |
-                    v
-          Preparation Plan
-```
-
----
-
-## API Endpoints
-
-### Authentication
-
-| Method | Endpoint             | Description         | Access  |
-| ------ | -------------------- | ------------------- | ------- |
-| `POST` | `/api/auth/register` | Register a new user | Public  |
-| `POST` | `/api/auth/login`    | Authenticate user   | Public  |
-| `POST` | `/api/auth/logout`   | Logout user         | Private |
-| `GET`  | `/api/auth/me`       | Get current user    | Private |
-
-### Interview
-
-| Method | Endpoint                                       | Description               | Access  |
-| ------ | ---------------------------------------------- | ------------------------- | ------- |
-| `POST` | `/api/interview`                               | Generate interview report | Private |
-| `GET`  | `/api/interview`                               | Get all user reports      | Private |
-| `GET`  | `/api/interview/report/:interviewId`           | Get specific report       | Private |
-| `POST` | `/api/interview/resume/pdf/:interviewReportId` | Generate resume PDF       | Private |
-
----
 
 ## Getting Started
 
@@ -264,36 +209,56 @@ Make sure the following are installed:
 
 * Node.js
 * npm
-* MongoDB
-* Git
-
-You will also need a Google Gemini API key.
-
----
-
-## Installation
+* MongoDB Atlas account
+* Speech-to-text API access
+* LLM API access
 
 ### Clone the Repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-cd "PROJECT Interviewly AI"
+git clone <repository-url>
+
+cd Interviewly-AI
 ```
 
-### Backend Setup
+## Frontend Setup
+
+Navigate to the frontend directory:
 
 ```bash
-cd Backend
+cd frontend
 npm install
 ```
 
-Create a `.env` file inside the `Backend` directory:
+Create a `.env` file:
+
+```env
+VITE_API_URL=http://localhost:3000/api
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The frontend will be available at the local URL provided by Vite.
+
+## Backend Setup
+
+Open another terminal and navigate to the backend:
+
+```bash
+cd backend
+npm install
+```
+
+Create a `.env` file:
 
 ```env
 PORT=3000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-GEMINI_API_KEY=your_gemini_api_key
+MONGODB_URI=your_mongodb_connection_string
+OPENAI_API_KEY=your_api_key
 ```
 
 Start the backend:
@@ -302,177 +267,208 @@ Start the backend:
 npm run dev
 ```
 
-Backend:
-
-```text
-http://localhost:3000
-```
-
-### Frontend Setup
-
-Open a new terminal:
+For production:
 
 ```bash
-cd Frontend
-npm install
-npm run dev
+npm start
 ```
-
-Frontend:
-
-```text
-http://localhost:5173
-```
-
----
 
 ## Environment Variables
 
-The following environment variables are required:
+The following environment variables are required by the application.
 
-| Variable         | Description                            |
-| ---------------- | -------------------------------------- |
-| `PORT`           | Backend server port                    |
-| `MONGO_URI`      | MongoDB connection string              |
-| `JWT_SECRET`     | Secret key used for JWT authentication |
-| `GEMINI_API_KEY` | Google Gemini API key                  |
+| Variable         | Description                          |
+| ---------------- | ------------------------------------ |
+| `PORT`           | Port used by the backend server      |
+| `MONGODB_URI`    | MongoDB database connection string   |
+| `OPENAI_API_KEY` | API key used for AI processing       |
+| `VITE_API_URL`   | Backend API URL used by the frontend |
 
-Do not commit `.env` files or API keys to GitHub.
+Do not commit `.env` files or API keys to the repository.
 
----
+## API Overview
 
-## API Testing
+The backend exposes REST APIs for meeting processing and retrieval.
 
-Postman can be used to test the backend APIs.
+### Upload Meeting
 
-Example interview generation request:
-
-```text
-POST http://localhost:3000/api/interview
+```http
+POST /api/meetings/upload
 ```
 
-Request type:
+Uploads an audio recording and starts the processing pipeline.
 
-```text
-multipart/form-data
+### Get Meetings
+
+```http
+GET /api/meetings
 ```
 
-Fields:
+Returns previously processed meetings.
 
-```text
-jobDescription   → Target job description
-selfDescription  → Candidate profile
-resume           → PDF/DOCX resume
+### Get Meeting
+
+```http
+GET /api/meetings/:id
 ```
 
-Authentication is handled through the JWT authentication cookie.
+Returns the details of a specific meeting.
 
----
-
-## Security
-
-Interviewly AI includes several backend security mechanisms:
-
-* JWT-based authentication
-* HTTP cookie-based token storage
-* Password hashing with bcrypt
-* Protected API routes
-* Token blacklisting
-* CORS configuration
-* Environment-based secret management
-* Resume file upload handling
-* Authentication middleware
-
----
-
-## Future Improvements
-
-* AI-powered real-time mock interviews
-* Voice-based interview simulation
-* AI answer evaluation
-* Interview performance analytics
-* Resume optimization
-* LinkedIn profile analysis
-* Advanced skill recommendations
-* AWS cloud deployment
-* Docker containerization
-* CI/CD pipeline
-* Redis-based caching
-* Automated testing and monitoring
-
----
-
-## Deployment
-
-The application can be deployed using:
-
-### Frontend
+### Processing Flow
 
 ```text
-Vercel
+POST /upload
+      |
+      v
+Audio Processing
+      |
+      v
+Transcription
+      |
+      v
+LLM Analysis
+      |
+      v
+MongoDB
+      |
+      v
+GET /meetings/:id
 ```
 
-### Backend
+## AI Output
 
-```text
-Render
+The AI processing layer is designed to produce structured information rather than returning an unstructured response.
+
+Example:
+
+```json
+{
+  "summary": "The team discussed the upcoming product release and finalized the deployment timeline.",
+  "decisions": [
+    "Release will be deployed next week."
+  ],
+  "actionItems": [
+    {
+      "task": "Prepare the production deployment",
+      "assignee": "Development Team",
+      "deadline": "Next Week"
+    }
+  ]
+}
 ```
 
-### Database
+## Error Handling
 
-```text
-MongoDB Atlas
-```
+The application handles common failure scenarios including:
 
-The architecture can also be extended to AWS using services such as EC2, S3, CloudFront, and other cloud infrastructure.
+* Invalid audio formats
+* Missing uploaded files
+* Failed transcription
+* LLM processing errors
+* Database connection failures
+* Invalid meeting IDs
+* API request failures
 
----
+The frontend also provides appropriate loading and error states during meeting processing.
+
+## Security Considerations
+
+* API keys are stored using environment variables.
+* Sensitive credentials are excluded from version control.
+* Uploaded files are validated before processing.
+* Backend APIs validate incoming requests.
+* Database credentials are not exposed to the frontend.
 
 ## Development
 
-Clone the repository and install dependencies separately for the frontend and backend.
+Run the frontend and backend independently during development.
+
+Frontend:
 
 ```bash
-# Backend
-cd Backend
-npm install
+cd frontend
 npm run dev
 ```
 
+Backend:
+
 ```bash
-# Frontend
-cd Frontend
-npm install
+cd backend
 npm run dev
 ```
 
----
+## Future Improvements
 
-## Author
+Potential improvements include:
 
-### Vaibhvee Prakash
+* Real-time meeting transcription
+* Speaker identification
+* Support for video recordings
+* Search across meeting transcripts
+* Advanced meeting analytics
+* Automatic task reminders
+* Calendar integration
+* Export meeting reports
+* Role-based access control
+* Improved AI processing for domain-specific interviews
 
-Computer Science Engineering
-Cloud Computing & Automation
+## Deployment
 
-**Interests**
+The application can be deployed using a separate frontend and backend architecture.
 
-* Full Stack Development
-* Cloud Computing
-* Artificial Intelligence
-* DevOps
-* Software Engineering
+### Frontend
 
----
+The React/Vite application can be deployed using platforms such as Vercel.
+
+### Backend
+
+The Node.js/Express API can be deployed using platforms such as Render or Railway.
+
+### Database
+
+MongoDB Atlas can be used as the production database.
+
+The production architecture can be represented as:
+
+```text
+                    ┌──────────────────┐
+                    │      User        │
+                    └────────┬─────────┘
+                             |
+                             v
+                    ┌──────────────────┐
+                    │ React Frontend   │
+                    │     (Vite)       │
+                    └────────┬─────────┘
+                             |
+                         REST API
+                             |
+                             v
+                    ┌──────────────────┐
+                    │ Node + Express   │
+                    └───────┬──────────┘
+                            |
+              ┌─────────────┼─────────────┐
+              |             |             |
+              v             v             v
+          Speech-to-Text   LLM       MongoDB Atlas
+              |             |
+              └──────┬──────┘
+                     |
+                     v
+              Structured Results
+```
+
+## Project Status
+
+Interviewly AI is currently under active development.
+
+The core application focuses on the complete pipeline from audio upload to transcription, AI analysis, structured results, and meeting history.
 
 ## License
 
-This project is developed for educational and portfolio purposes.
+This project is intended for educational, portfolio, and demonstration purposes.
 
----
+## Author
 
-<p align="center">
-  <strong>Interviewly AI</strong>
-  <br>
-  AI-powered interview preparation for modern developers.
-</p>
+**Vaibhvee Prakash**
