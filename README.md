@@ -1,474 +1,436 @@
+Absolutely. For **Interviewly AI**, I’d make the README look like a proper production-level project rather than a basic college-project README.
+
+You can replace your current `README.md` with this:
+
 # Interviewly AI
 
-Interviewly AI is an AI-powered meeting and interview analysis platform that transforms recorded conversations into structured, actionable insights.
-
-The application allows users to upload meeting or interview recordings, automatically generate transcripts, and use an LLM to extract summaries, key decisions, and actionable tasks. Processed meetings are stored and can be accessed through a centralized dashboard.
+> An AI-powered interview preparation and assessment platform that helps candidates practice interviews, receive intelligent feedback, and improve their interview performance.
 
 ## Overview
 
-Interviewly AI is designed to reduce the time required to manually review lengthy meetings and interviews.
+**Interviewly AI** is a full-stack AI-powered interview platform designed to simulate technical and behavioral interviews in a realistic environment.
 
-The application follows an automated processing pipeline:
+The application allows users to create an account, participate in AI-generated interviews, submit responses, and receive an automated interview report with performance insights and recommendations.
 
-```text
-Audio / Meeting Recording
-          |
-          v
-     File Upload
-          |
-          v
-   Speech-to-Text (ASR)
-          |
-          v
-       Transcript
-          |
-          v
-      LLM Analysis
-          |
-          v
-Structured Meeting Data
-          |
-          +-------------------+
-          |                   |
-          v                   v
-       Dashboard         Meeting Details
-```
+The project combines modern web development, RESTful backend architecture, authentication, database management, and Generative AI to create an end-to-end interview preparation experience.
 
-The system converts unstructured audio into structured information that can be quickly reviewed and acted upon.
+## Key Features
 
-## Core Features
+### Authentication and User Management
 
-### Audio Upload
+* User registration and login
+* Secure password hashing
+* JWT-based authentication
+* Protected routes
+* Persistent user sessions
+* Authentication state management
 
-Users can upload recorded meetings or interviews in supported audio formats such as:
+### AI-Powered Interviews
 
-* MP3
-* WAV
-* M4A
+* Dynamically generated interview questions
+* Technical and behavioral interview scenarios
+* AI-assisted interview evaluation
+* Structured interview responses
+* Personalized interview experience
 
-The backend handles the uploaded file and initiates the processing pipeline.
+### Interview Evaluation
 
-### Automatic Transcription
+The platform analyzes candidate responses and generates insights such as:
 
-Audio recordings are converted into text using a speech-to-text model.
+* Answer quality
+* Relevance
+* Communication effectiveness
+* Technical understanding
+* Areas for improvement
+* Overall performance
 
-The generated transcript is stored alongside the corresponding meeting record.
+### Interview Reports
 
-### AI-Powered Summarization
+After completing an interview, users can access a structured report containing:
 
-The transcript is processed using a Large Language Model to generate a concise and structured summary.
+* Overall interview performance
+* Question-wise evaluation
+* AI-generated feedback
+* Strengths and weaknesses
+* Improvement suggestions
 
-### Key Decisions
+### Modern Frontend
 
-The system identifies important decisions discussed during the meeting, allowing users to review the outcomes without going through the complete transcript.
-
-### Action Items
-
-Interviewly AI extracts actionable tasks from the conversation.
-
-Each action item can contain:
-
-* Task
-* Assignee
-* Deadline
-
-This makes it easier to convert meeting discussions into follow-up work.
-
-### Meeting Dashboard
-
-The dashboard provides an overview of processed meetings and allows users to access previously generated results.
-
-### Meeting Details
-
-Each meeting contains its associated:
-
-* Summary
-* Transcript
-* Key decisions
-* Action items
-* Processing information
+* Responsive user interface
+* Reusable React components
+* Protected application routes
+* Dedicated authentication pages
+* Interview workspace
+* Landing page
+* Loading and error states
+* Responsive styling using SCSS
 
 ## Technology Stack
 
 ### Frontend
 
-* React
-* Vite
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge\&logo=react\&logoColor=61DAFB)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge\&logo=vite\&logoColor=white)
+![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge\&logo=sass\&logoColor=white)
+
+* React.js
+* JavaScript
 * React Router
+* Vite
+* SCSS
 * Axios
-* CSS
 
 ### Backend
+
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge\&logo=node.js\&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge\&logo=express\&logoColor=white)
 
 * Node.js
 * Express.js
 * REST APIs
-* Multer for file uploads
-
-### AI
-
-* Speech-to-Text / Whisper
-* Large Language Model API
+* JWT
+* bcrypt
+* Middleware-based architecture
 
 ### Database
 
-* MongoDB
-* MongoDB Atlas
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge\&logo=mongodb\&logoColor=white)
 
-## Project Architecture
+* MongoDB
+* Mongoose
+
+### Artificial Intelligence
+
+* Generative AI
+* AI-powered question generation
+* AI-based response evaluation
+* Structured AI interview reports
+
+### Development and Deployment
+
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge\&logo=git\&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge\&logo=github\&logoColor=white)
+
+* Git
+* GitHub
+* Postman
+* REST API development
+* Environment-based configuration
+
+## System Architecture
 
 ```text
-Interviewly AI
-|
-├── Frontend
-|   ├── Authentication
-|   ├── Dashboard
-|   ├── Meeting Upload
-|   ├── Meeting History
-|   └── Meeting Details
-|
-├── Backend
-|   ├── REST API
-|   ├── File Upload
-|   ├── Speech-to-Text Processing
-|   ├── LLM Processing
-|   └── Database Operations
-|
-└── Database
-    └── MongoDB
+                         ┌─────────────────────┐
+                         │       Client        │
+                         │    React + Vite     │
+                         └──────────┬──────────┘
+                                    │
+                                    │ HTTP / REST API
+                                    ▼
+                         ┌─────────────────────┐
+                         │      Express.js     │
+                         │       Backend       │
+                         └──────────┬──────────┘
+                                    │
+                    ┌───────────────┼────────────────┐
+                    │               │                │
+                    ▼               ▼                ▼
+             ┌────────────┐  ┌────────────┐  ┌──────────────┐
+             │    Auth    │  │  MongoDB   │  │  AI Service  │
+             │ JWT/Bcrypt │  │  Database  │  │ Generative AI│
+             └────────────┘  └────────────┘  └──────────────┘
+                                    │                │
+                                    └───────┬────────┘
+                                            ▼
+                                  ┌──────────────────┐
+                                  │ Interview Report │
+                                  │ & AI Feedback    │
+                                  └──────────────────┘
 ```
 
 ## Application Workflow
 
-### 1. Upload
-
-The user uploads a meeting or interview recording through the React application.
-
-### 2. File Processing
-
-The backend receives the file using a REST API and handles the uploaded audio.
-
-### 3. Transcription
-
-The audio is sent to the speech-to-text service and converted into a transcript.
-
-### 4. AI Analysis
-
-The transcript is passed to the LLM with a structured prompt.
-
-The model extracts:
-
-* Meeting summary
-* Key decisions
-* Action items
-* Assignees
-* Deadlines
-
-### 5. Data Storage
-
-The generated results and transcript are stored in MongoDB.
-
-### 6. Dashboard
-
-The frontend retrieves the processed meeting information through the backend API and displays it in the dashboard.
+```text
+User
+ │
+ ▼
+Landing Page
+ │
+ ├── Register
+ │      │
+ │      ▼
+ │   Login
+ │
+ ▼
+Dashboard
+ │
+ ▼
+Start Interview
+ │
+ ▼
+AI Generates Questions
+ │
+ ▼
+User Submits Responses
+ │
+ ▼
+AI Evaluates Responses
+ │
+ ▼
+Interview Report
+ │
+ ▼
+Performance Insights
+ │
+ ▼
+Improvement Recommendations
+```
 
 ## Project Structure
 
 ```text
 Interviewly-AI/
-|
-├── frontend/
+│
+├── Backend/
+│   │
 │   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
 │   │   ├── services/
-│   │   ├── hooks/
-│   │   └── App.jsx
+│   │   └── server.js
+│   │
+│   ├── package.json
+│   └── .env
+│
+├── Frontend/
+│   │
 │   ├── public/
+│   │
+│   ├── src/
+│   │   ├── features/
+│   │   │   ├── auth/
+│   │   │   ├── interview/
+│   │   │   └── landing/
+│   │   │
+│   │   ├── app.routes.jsx
+│   │   └── main.jsx
+│   │
 │   ├── package.json
 │   └── vite.config.js
 │
-├── backend/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── middleware/
-│   ├── services/
-│   ├── uploads/
-│   ├── server.js
-│   └── package.json
-│
+├── .gitignore
 └── README.md
 ```
 
-## Getting Started
+## API Architecture
 
-### Prerequisites
+The backend follows a modular REST API architecture.
 
-Make sure the following are installed:
+### Authentication
 
-* Node.js
-* npm
-* MongoDB Atlas account
-* Speech-to-text API access
-* LLM API access
+| Method | Endpoint             | Description                 |
+| ------ | -------------------- | --------------------------- |
+| POST   | `/api/auth/register` | Register a new user         |
+| POST   | `/api/auth/login`    | Authenticate user           |
+| GET    | `/api/auth/me`       | Retrieve authenticated user |
+
+### Interview
+
+| Method | Endpoint                | Description                    |
+| ------ | ----------------------- | ------------------------------ |
+| POST   | `/api/interview/start`  | Start an interview             |
+| POST   | `/api/interview/submit` | Submit interview responses     |
+| GET    | `/api/interview/:id`    | Retrieve interview information |
+
+> Endpoint names may vary depending on the current backend implementation.
+
+## Authentication Flow
+
+Interviewly AI uses JWT-based authentication.
+
+```text
+User Registration
+       │
+       ▼
+Password Hashing
+       │
+       ▼
+User Stored in MongoDB
+       │
+       ▼
+User Login
+       │
+       ▼
+Credentials Verified
+       │
+       ▼
+JWT Generated
+       │
+       ▼
+Authenticated Requests
+       │
+       ▼
+Protected Backend Resources
+```
+
+Passwords are hashed before being stored, and protected resources require valid authentication.
+
+## AI Interview Pipeline
+
+```text
+Interview Configuration
+        │
+        ▼
+AI Question Generation
+        │
+        ▼
+Interview Session
+        │
+        ▼
+Candidate Response
+        │
+        ▼
+AI Response Evaluation
+        │
+        ▼
+Structured Evaluation
+        │
+        ▼
+Interview Report
+```
+
+The AI service is responsible for generating interview content and transforming candidate responses into structured evaluation data.
+
+## Environment Variables
+
+Create a `.env` file inside the `Backend` directory.
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+AI_API_KEY=your_ai_api_key
+```
+
+Never commit environment files or API keys to the repository.
+
+## Installation
 
 ### Clone the Repository
 
 ```bash
-git clone <repository-url>
-
+git clone https://github.com/Vaibhvee012/Interviewly-AI.git
 cd Interviewly-AI
 ```
 
-## Frontend Setup
-
-Navigate to the frontend directory:
+### Backend Setup
 
 ```bash
-cd frontend
+cd Backend
 npm install
 ```
 
-Create a `.env` file:
+Create the environment file:
 
-```env
-VITE_API_URL=http://localhost:3000/api
+```bash
+.env
 ```
 
-Start the development server:
+Add the required environment variables and start the backend:
 
 ```bash
 npm run dev
 ```
 
-The frontend will be available at the local URL provided by Vite.
+### Frontend Setup
 
-## Backend Setup
-
-Open another terminal and navigate to the backend:
+Open another terminal:
 
 ```bash
-cd backend
+cd Frontend
 npm install
-```
-
-Create a `.env` file:
-
-```env
-PORT=3000
-MONGODB_URI=your_mongodb_connection_string
-OPENAI_API_KEY=your_api_key
-```
-
-Start the backend:
-
-```bash
 npm run dev
 ```
 
-For production:
+The frontend will be available through the Vite development server.
 
-```bash
-npm start
-```
-
-## Environment Variables
-
-The following environment variables are required by the application.
-
-| Variable         | Description                          |
-| ---------------- | ------------------------------------ |
-| `PORT`           | Port used by the backend server      |
-| `MONGODB_URI`    | MongoDB database connection string   |
-| `OPENAI_API_KEY` | API key used for AI processing       |
-| `VITE_API_URL`   | Backend API URL used by the frontend |
-
-Do not commit `.env` files or API keys to the repository.
-
-## API Overview
-
-The backend exposes REST APIs for meeting processing and retrieval.
-
-### Upload Meeting
-
-```http
-POST /api/meetings/upload
-```
-
-Uploads an audio recording and starts the processing pipeline.
-
-### Get Meetings
-
-```http
-GET /api/meetings
-```
-
-Returns previously processed meetings.
-
-### Get Meeting
-
-```http
-GET /api/meetings/:id
-```
-
-Returns the details of a specific meeting.
-
-### Processing Flow
+## Development Workflow
 
 ```text
-POST /upload
-      |
-      v
-Audio Processing
-      |
-      v
-Transcription
-      |
-      v
-LLM Analysis
-      |
-      v
-MongoDB
-      |
-      v
-GET /meetings/:id
+Feature Development
+        │
+        ▼
+Local Development
+        │
+        ▼
+API Testing
+        │
+        ▼
+Frontend Integration
+        │
+        ▼
+Git Commit
+        │
+        ▼
+GitHub
+        │
+        ▼
+Deployment
 ```
-
-## AI Output
-
-The AI processing layer is designed to produce structured information rather than returning an unstructured response.
-
-Example:
-
-```json
-{
-  "summary": "The team discussed the upcoming product release and finalized the deployment timeline.",
-  "decisions": [
-    "Release will be deployed next week."
-  ],
-  "actionItems": [
-    {
-      "task": "Prepare the production deployment",
-      "assignee": "Development Team",
-      "deadline": "Next Week"
-    }
-  ]
-}
-```
-
-## Error Handling
-
-The application handles common failure scenarios including:
-
-* Invalid audio formats
-* Missing uploaded files
-* Failed transcription
-* LLM processing errors
-* Database connection failures
-* Invalid meeting IDs
-* API request failures
-
-The frontend also provides appropriate loading and error states during meeting processing.
 
 ## Security Considerations
 
-* API keys are stored using environment variables.
-* Sensitive credentials are excluded from version control.
-* Uploaded files are validated before processing.
-* Backend APIs validate incoming requests.
-* Database credentials are not exposed to the frontend.
+The project implements several basic security practices:
 
-## Development
+* Password hashing using bcrypt
+* JWT-based authentication
+* Protected API routes
+* Environment variable configuration
+* `.env` files excluded from version control
+* Backend validation and error handling
+* Separation of frontend and backend responsibilities
 
-Run the frontend and backend independently during development.
-
-Frontend:
-
-```bash
-cd frontend
-npm run dev
-```
-
-Backend:
-
-```bash
-cd backend
-npm run dev
-```
-
-## Future Improvements
+## Future Enhancements
 
 Potential improvements include:
 
-* Real-time meeting transcription
-* Speaker identification
-* Support for video recordings
-* Search across meeting transcripts
-* Advanced meeting analytics
-* Automatic task reminders
-* Calendar integration
-* Export meeting reports
-* Role-based access control
-* Improved AI processing for domain-specific interviews
+* Real-time AI interview conversations
+* Voice-based interviews
+* Speech-to-text integration
+* Resume-based interview generation
+* Difficulty-based interview customization
+* Interview history and analytics
+* Advanced candidate performance dashboards
+* Skill-wise performance tracking
+* AI-generated personalized learning plans
+* Docker-based deployment
+* AWS cloud deployment
+* CI/CD pipeline integration
 
-## Deployment
+## Project Goals
 
-The application can be deployed using a separate frontend and backend architecture.
+The primary goals of Interviewly AI are to:
 
-### Frontend
-
-The React/Vite application can be deployed using platforms such as Vercel.
-
-### Backend
-
-The Node.js/Express API can be deployed using platforms such as Render or Railway.
-
-### Database
-
-MongoDB Atlas can be used as the production database.
-
-The production architecture can be represented as:
-
-```text
-                    ┌──────────────────┐
-                    │      User        │
-                    └────────┬─────────┘
-                             |
-                             v
-                    ┌──────────────────┐
-                    │ React Frontend   │
-                    │     (Vite)       │
-                    └────────┬─────────┘
-                             |
-                         REST API
-                             |
-                             v
-                    ┌──────────────────┐
-                    │ Node + Express   │
-                    └───────┬──────────┘
-                            |
-              ┌─────────────┼─────────────┐
-              |             |             |
-              v             v             v
-          Speech-to-Text   LLM       MongoDB Atlas
-              |             |
-              └──────┬──────┘
-                     |
-                     v
-              Structured Results
-```
-
-## Project Status
-
-Interviewly AI is currently under active development.
-
-The core application focuses on the complete pipeline from audio upload to transcription, AI analysis, structured results, and meeting history.
-
-## License
-
-This project is intended for educational, portfolio, and demonstration purposes.
+1. Provide a realistic interview practice environment.
+2. Reduce dependency on manual interview evaluation.
+3. Provide actionable AI-generated feedback.
+4. Help candidates identify weaknesses and improve continuously.
+5. Demonstrate a production-oriented full-stack architecture integrating Generative AI.
 
 ## Author
 
 **Vaibhvee Prakash**
+
+Computer Science Engineering
+Cloud Computing and Automation
+
+[GitHub](https://github.com/Vaibhvee012)
+
+---
+
+## License
+
+This project is developed for educational, portfolio, and demonstration purposes.
