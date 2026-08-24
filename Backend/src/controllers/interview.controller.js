@@ -10,15 +10,22 @@ async function generateInterviewReportController(req, res) {
     try {
         const resumeFile = req.file
 
-        const parser = new PDFParse({ data: resumeFile.buffer })
+        let resumeContent = ""
 
-        const parsedResult = await parser.getText()
-
-        const resumeContent = parsedResult.text
-
-        await parser.destroy()
+        if (resumeFile) {
+            const parser = new PDFParse({ data: resumeFile.buffer })
+            const parsedResult = await parser.getText()
+            resumeContent = parsedResult.text
+            await parser.destroy()
+        }
 
         const { selfDescription, jobDescription } = req.body
+
+        if (!resumeContent && !selfDescription) {
+            return res.status(400).json({
+                message: "Either a resume or a self description is required"
+            })
+        }
 
         const interviewReportByAi = await generateInterviewReport({
             resume: resumeContent,
@@ -133,7 +140,8 @@ async function generateResumePdfController(req,res){
         }
         console.error("Failed to generate resume PDF:", err.message)
         res.status(500).json({ message: "Failed to generate resume PDF" })
-
+    }
+}
 
 module.exports = {
     generateInterviewReportController,

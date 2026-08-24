@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
 import {
-    GraduationCap,
     Sparkles,
     Upload,
     FileText,
@@ -96,7 +95,11 @@ const Landing = () => {
         <div className='landing'>
             <header className='landing-nav' id='top'>
                 <div className='landing-nav__brand'>
-                    <GraduationCap size={22} className='landing-nav__logo' />
+                    <img
+                        src='/logo-navbar.png'
+                        alt='Interviewly AI logo'
+                        className='landing-nav__logo'
+                    />
                     Interviewly AI
                 </div>
 

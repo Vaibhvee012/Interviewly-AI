@@ -1,5 +1,9 @@
 Backend/node_modules/
 Backend/.env
+
 Frontend/node_modules/
 Frontend/dist/
-Frontend/src/features/interview/
+
+.env
+.env.*
+!.env.example
