@@ -10,7 +10,7 @@ app.use(cookieParser())
 
 app.use(
     cors({
-        origin: "https://interviewly-ai-six.vercel.app",
+        origin: "https://interviewly-mhhux0ytq-vibe-7cbc.vercel.app",
         credentials: true
     })
 )
