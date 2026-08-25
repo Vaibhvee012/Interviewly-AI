@@ -1,4 +1,4 @@
-const userModel = require("../models/user.model")
+﻿const userModel = require("../models/user.model")
 
 const bcrypt = require("bcryptjs")
 
@@ -55,6 +55,7 @@ async function registerUserController(req, res) {
 
     res.status(201).json({
         message: "User registered successfully",
+        token,
         user: {
             id: user._id,
             username: user.username,
@@ -107,6 +108,7 @@ async function loginUserController(req, res) {
 
     res.status(200).json({
         message: "User logged in successfully",
+        token,
         user: {
             id: user._id,
             username: user.username,
@@ -118,7 +120,8 @@ async function loginUserController(req, res) {
 
 async function logoutUserController(req, res) {
 
-    const token = req.cookies.jwt_token
+    // req.token is set by authMiddleware from whichever source (header or cookie) was used
+    const token = req.token || req.cookies.jwt_token
 
     if (token) {
         await tokenBlacklistModel.create({

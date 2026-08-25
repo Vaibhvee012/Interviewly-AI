@@ -1,11 +1,15 @@
-const jwt = require("jsonwebtoken")
+﻿const jwt = require("jsonwebtoken")
 const tokenBlacklistModel = require("../models/blacklist.model")
 
 async function authUser(req, res, next) {
-    const token = req.cookies.jwt_token
+    // Prefer the Authorization header; fall back to the cookie for
+    // anything still relying on the old cookie-based flow.
+    const authHeader = req.headers.authorization
+    const headerToken = authHeader && authHeader.startsWith("Bearer ")
+        ? authHeader.split(" ")[1]
+        : null
 
-    console.log("Cookies:", req.cookies)
-    console.log("JWT Token:", token)
+    const token = headerToken || req.cookies.jwt_token
 
     if (!token) {
         return res.status(401).json({
@@ -30,6 +34,7 @@ async function authUser(req, res, next) {
         )
 
         req.user = decoded
+        req.token = token // useful for logout to blacklist the right token
 
         next()
     } catch (err) {
