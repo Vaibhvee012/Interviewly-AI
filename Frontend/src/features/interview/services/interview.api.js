@@ -1,4 +1,4 @@
-import api from "./auth.api"
+import api from "../../auth/services/auth.api"
 
 /**
  * Service to generate interview report based on user self description,
