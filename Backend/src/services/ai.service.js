@@ -58,7 +58,17 @@ async function generateInterviewReport({ resume, selfDescription, jobDescription
 
 
 async function generatePdfFromHtml(htmlContent){
-    const browser = await puppeteer.launch()
+    // Render (and most hosted Linux containers) can't use Chrome's default
+    // sandbox, and have no GPU â€” launch without either, or Puppeteer fails
+    // to start the browser process at all.
+    const browser = await puppeteer.launch({
+        args: [
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+            "--disable-dev-shm-usage",
+            "--disable-gpu"
+        ]
+    })
     const page = await browser.newPage()
 
     // Force the page to A4 pixel dimensions at 96dpi so measurements are consistent
@@ -80,7 +90,7 @@ async function generatePdfFromHtml(htmlContent){
     const contentHeight = await page.evaluate(() => document.body.scrollHeight)
 
     if (contentHeight > A4_HEIGHT_PX) {
-        // Content overflows — scale it down to fit exactly one page
+        // Content overflows, scale it down to fit exactly one page
         const scaleFactor = A4_HEIGHT_PX / contentHeight
         await page.evaluate((scale) => {
             document.body.style.transformOrigin = "top left"
@@ -88,7 +98,7 @@ async function generatePdfFromHtml(htmlContent){
             document.body.style.width = `${100 / scale}%`
         }, contentHeight > A4_HEIGHT_PX ? A4_HEIGHT_PX / contentHeight : 1)
     } else if (contentHeight < A4_HEIGHT_PX * 0.9) {
-        // Content is noticeably short of one page — stretch it to fill the page
+        // Content is noticeably short of one page, stretch it to fill the page
         const scaleFactor = A4_HEIGHT_PX / contentHeight
         await page.evaluate((scale) => {
             document.body.style.transformOrigin = "top left"
@@ -135,7 +145,7 @@ async function generateResumePdf({ resume, selfDescription, jobDescription }) {
                     To guarantee this:
                     - Set html, body to height: 297mm and width: 210mm explicitly, with box-sizing: border-box and margin: 0.
                     - Use a flex or grid layout on the outer container so content sections distribute and fill the full height naturally (e.g. display: flex; flex-direction: column; height: 100%; and let sections like Work Experience grow using flex-grow if there's extra space).
-                    - Include enough real detail (multiple bullet points per role, a complete skills section, a full summary) to naturally occupy the page — do not leave large blank areas.
+                    - Include enough real detail (multiple bullet points per role, a complete skills section, a full summary) to naturally occupy the page, do not leave large blank areas.
                     - If there isn't enough content to naturally fill the page, expand truthfully on what's provided (more detail per bullet, slightly larger font-size, more generous section spacing/padding) rather than leaving empty space. Never invent achievements, employers, or skills not present in the source material.
                     - If content risks overflowing, use a smaller font-size (down to 9-9.5px if needed), tighter line-height (1.3-1.4), and trim the least relevant/oldest bullet points first.
                     - Use standard margins of 12-15mm on all sides within the 210x297mm page, with all content contained inside that boundary.
