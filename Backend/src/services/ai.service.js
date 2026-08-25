@@ -168,7 +168,7 @@ async function generateResumePdf({ resume, selfDescription, jobDescription }) {
 
         return pdfBuffer
     } catch (err) {
-        console.error("Gemini API error in generateResumePdf:", err.message)
+        console.error("Error in generateResumePdf:", err)
         throw err
     }
 }
