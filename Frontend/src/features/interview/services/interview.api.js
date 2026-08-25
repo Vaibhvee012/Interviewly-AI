@@ -1,9 +1,4 @@
-import axios from "axios"
-
-const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
-    withCredentials: true,
-})
+import api from "./auth.api"
 
 /**
  * Service to generate interview report based on user self description,
@@ -64,9 +59,9 @@ export const getAllInterviewReports = async () => {
 export const generateResumePdf = async (interviewReportId) => {
     const response = await api.post(
         `/api/interview/resume/pdf/${interviewReportId}`,
-        null,{
+        null, {
             responseType: "blob"
         })
-        
+
     return response.data
 }
