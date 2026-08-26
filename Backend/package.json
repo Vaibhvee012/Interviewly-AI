@@ -4,12 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "dev": "npx nodemon server.js",
-  "start": "node server.js",
-  "postinstall": "puppeteer browsers install chrome"
-}
-
-},
+    "dev": "npx nodemon server.js",
+    "start": "node server.js",
+    "postinstall": "puppeteer browsers install chrome"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -35,3 +33,4 @@
     "puppeteer@25.8.0": true
   }
 }
+
