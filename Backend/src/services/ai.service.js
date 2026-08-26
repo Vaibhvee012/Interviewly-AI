@@ -1,5 +1,8 @@
 const { GoogleGenAI } = require("@google/genai")
 const { z } = require("zod")
+
+process.env.PUPPETEER_CACHE_DIR = "/opt/render/.cache/puppeteer"
+
 const puppeteer = require("puppeteer")
 
 const ai = new GoogleGenAI({
