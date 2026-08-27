@@ -495,7 +495,7 @@ Interviewly AI is deployed as two separate services.
 The React frontend is deployed using Vercel.
 
 **Live Application:**
-https://interviewly-ai-six.vercel.app/
+https://interviewly-ai-zeta.vercel.app/
 
 ### Backend — Render
 
