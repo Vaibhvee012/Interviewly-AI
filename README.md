@@ -1,262 +1,348 @@
 # Interviewly AI
 
-> AI-powered interview preparation and assessment platform designed to help candidates practice interviews, receive intelligent feedback, and improve their interview performance.
+**Interviewly AI** is an AI-powered interview preparation platform that helps candidates prepare for technical and behavioral interviews through personalized questions, skill-gap analysis, and structured preparation plans.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
-  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" />
-  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" />
-  <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
-  <img src="https://img.shields.io/badge/Generative%20AI-412991?style=for-the-badge&logo=openai&logoColor=white" />
-  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
-</p>
+## Live Application
+
+**Frontend:**
+https://interviewly-ai-six.vercel.app/
+
+**Backend API:**
+https://interviewly-ai.onrender.com/
+
+The frontend is deployed on **Vercel**, while the backend API is deployed on **Render**.
 
 ---
 
 ## Overview
 
-**Interviewly AI** is a full-stack Generative AI-powered interview preparation platform that provides candidates with a personalized interview preparation experience.
+Interviewly AI is a full-stack web application built to provide a personalized interview preparation experience.
 
-The platform analyzes a candidate's target job description and profile information to generate a customized interview strategy containing technical questions, behavioral questions, skill gaps, and a preparation roadmap.
+Users can create an account, provide a target job description, and upload their resume or enter a short self-description. The application then uses Generative AI to analyze the information and create a customized interview strategy.
 
-Interviewly AI combines **React, Node.js, Express.js, MongoDB, JWT authentication, REST APIs, and Generative AI** to deliver an end-to-end interview preparation workflow.
+The generated plan includes technical questions, behavioral questions, skill gaps, a match score, and a preparation roadmap.
+
+The project combines modern frontend development, RESTful APIs, authentication, database management, file handling, and Generative AI into a single full-stack application.
 
 ---
 
-## Key Features
+## Features
 
-### Authentication & User Management
+### Authentication
 
 * User registration and login
-* Secure password hashing using bcrypt
 * JWT-based authentication
-* Protected API routes
+* Password hashing using bcrypt
+* Protected routes
 * Persistent authentication state
-* User session management
+* Authenticated API requests
 
-### AI-Powered Interview Preparation
+### Personalized Interview Planning
 
-* Job-description-based interview preparation
-* AI-generated technical questions
-* AI-generated behavioral questions
-* Personalized interview strategy
-* Candidate-specific preparation roadmap
-* Skill-gap identification
+Users can provide:
 
-### Interview Analysis
+* Target job description
+* Resume
+* Quick self-description
 
-The platform generates structured insights based on the candidate's profile and target role, including:
+The application uses this information to generate an interview strategy tailored to the target role.
 
-* Technical skill requirements
-* Behavioral interview preparation
-* Skill gaps
-* Interview-focused recommendations
-* Preparation roadmap
-* Overall job-match score
+### Technical Questions
+
+The platform generates role-specific technical questions based on the job description and candidate profile.
+
+Each question contains:
+
+* Interview question
+* Interviewer's intention
+* Model answer
+
+### Behavioral Questions
+
+The platform generates behavioral questions focused on common interview situations and scenarios relevant to the candidate's target role.
+
+### Skill Gap Analysis
+
+Interviewly AI identifies areas where the candidate may need additional preparation.
+
+Skill gaps are displayed based on their relevance to the target position.
+
+### Preparation Roadmap
+
+The application generates a structured preparation plan containing:
+
+* Daily focus areas
+* Recommended topics
+* Preparation tasks
+* Areas requiring improvement
+
+### Match Score
+
+A match score provides an overview of how closely the candidate's profile aligns with the target role.
 
 ### Interview Reports
 
 Each generated interview plan provides:
 
+* Match score
 * Technical questions
 * Behavioral questions
-* Model answers
-* Question intentions
+* Skill gaps
 * Preparation roadmap
-* Skill-gap analysis
-* Match score
+* AI-generated recommendations
 
 ### Resume Support
 
-* Resume upload support
-* Resume-based candidate analysis
-* AI-powered resume processing
-* Resume PDF generation
+Users can upload their resume while creating an interview plan.
 
-### Modern Frontend
+Supported formats:
 
-* Responsive user interface
-* React component architecture
-* React Router navigation
-* Protected routes
-* Authentication pages
+* PDF
+* DOCX
+
+### Responsive Interface
+
+The frontend includes dedicated interfaces for:
+
 * Landing page
-* Interview dashboard
-* Loading states
-* Error handling
-* SCSS-based styling
+* Registration
+* Login
+* Interview plan generation
+* Interview reports
+* Technical questions
+* Behavioral questions
+* Preparation roadmap
 
 ---
 
-# Technology Stack
+## Technology Stack
 
-## Frontend
+### Frontend
 
-| Technology   | Purpose                       |
-| ------------ | ----------------------------- |
-| React.js     | Frontend UI development       |
-| JavaScript   | Application logic             |
-| Vite         | Development and build tooling |
-| React Router | Client-side routing           |
-| Axios        | API communication             |
-| SCSS         | Styling and responsive design |
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge\&logo=react\&logoColor=61DAFB)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge\&logo=vite\&logoColor=white)
+![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge\&logo=sass\&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge\&logo=axios\&logoColor=white)
 
-<p>
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
-  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
-  <img src="https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white" />
-</p>
+* React.js
+* JavaScript
+* React Router
+* Vite
+* SCSS
+* Axios
 
-## Backend
+### Backend
 
-| Technology | Purpose                               |
-| ---------- | ------------------------------------- |
-| Node.js    | Server-side runtime                   |
-| Express.js | REST API framework                    |
-| JWT        | Authentication                        |
-| bcrypt     | Password hashing                      |
-| REST API   | Frontend-backend communication        |
-| Middleware | Authentication and request processing |
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge\&logo=node.js\&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge\&logo=express\&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge\&logo=jsonwebtokens\&logoColor=white)
 
-<p>
-  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" />
-  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" />
-  <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white" />
-</p>
+* Node.js
+* Express.js
+* REST APIs
+* JWT
+* bcrypt
+* Middleware architecture
 
-## Database
+### Database
 
-| Technology | Purpose                 |
-| ---------- | ----------------------- |
-| MongoDB    | Database                |
-| Mongoose   | MongoDB object modeling |
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge\&logo=mongodb\&logoColor=white)
+![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge\&logo=mongoose\&logoColor=white)
 
-<p>
-  <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
-</p>
+* MongoDB
+* Mongoose
 
-## Artificial Intelligence
+### Artificial Intelligence
 
 * Generative AI
 * AI-powered question generation
-* AI-assisted interview preparation
+* AI-assisted interview analysis
 * Structured AI responses
-* Candidate profile analysis
+* Personalized recommendations
 * Skill-gap analysis
-* Personalized preparation recommendations
 
-## Development Tools
+### Tools & Deployment
+
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge\&logo=git\&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge\&logo=github\&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge\&logo=vercel\&logoColor=white)
+![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge\&logo=render\&logoColor=black)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge\&logo=postman\&logoColor=white)
 
 * Git
 * GitHub
-* VS Code
 * Postman
+* Vercel
+* Render
 * npm
-* REST APIs
-* Environment variables
 
 ---
 
-# System Architecture
+## System Architecture
 
 ```text
                          ┌────────────────────────┐
-                         │        User            │
-                         │   Web Browser / Client  │
+                         │      User / Browser     │
                          └────────────┬───────────┘
                                       │
                                       ▼
                          ┌────────────────────────┐
-                         │    React + Vite        │
-                         │       Frontend         │
+                         │     React Frontend      │
+                         │       Vite + SCSS       │
                          └────────────┬───────────┘
                                       │
-                              HTTP / REST API
+                                  REST API
                                       │
                                       ▼
                          ┌────────────────────────┐
-                         │      Express.js        │
-                         │        Backend         │
+                         │     Express Backend     │
+                         │        Node.js          │
                          └────────────┬───────────┘
                                       │
-              ┌───────────────────────┼──────────────────────┐
-              │                       │                      │
-              ▼                       ▼                      ▼
-       ┌──────────────┐       ┌──────────────┐       ┌──────────────┐
-       │ Authentication│       │   MongoDB    │       │ Generative AI│
-       │  JWT + bcrypt │       │   Database   │       │    Service   │
-       └──────────────┘       └──────────────┘       └──────────────┘
-                                      │                      │
-                                      └──────────┬───────────┘
-                                                 ▼
-                                    ┌────────────────────────┐
-                                    │   Interview Report     │
-                                    │ Questions & Insights   │
-                                    └────────────────────────┘
+                    ┌─────────────────┼─────────────────┐
+                    │                 │                 │
+                    ▼                 ▼                 ▼
+             ┌────────────┐   ┌──────────────┐   ┌─────────────┐
+             │    Auth    │   │   MongoDB    │   │  AI Service │
+             │ JWT/Bcrypt │   │  + Mongoose  │   │  Generative │
+             └────────────┘   └──────────────┘   │      AI     │
+                                                 └──────┬──────┘
+                                                        │
+                                                        ▼
+                                            ┌────────────────────┐
+                                            │  Interview Report  │
+                                            │ Questions + Gaps   │
+                                            │ + Preparation Plan │
+                                            └────────────────────┘
 ```
 
 ---
 
-# Application Workflow
+## Application Workflow
 
 ```text
-                        ┌──────────────┐
-                        │     User     │
-                        └──────┬───────┘
-                               │
-                               ▼
-                      ┌─────────────────┐
-                      │  Landing Page   │
-                      └────────┬────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │ Register / Login    │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                     ┌──────────────────┐
-                     │ Interview Setup  │
-                     └────────┬─────────┘
-                              │
-                   ┌──────────┴──────────┐
-                   │                     │
-                   ▼                     ▼
-            Job Description        Resume / Profile
-                   │                     │
-                   └──────────┬──────────┘
-                              ▼
-                    ┌──────────────────┐
-                    │   Generative AI  │
-                    └────────┬─────────┘
-                             │
-                             ▼
-                  ┌──────────────────────┐
-                  │ Interview Strategy  │
-                  └──────────┬───────────┘
-                             │
-            ┌────────────────┼────────────────┐
-            │                │                │
-            ▼                ▼                ▼
-      Technical        Behavioral        Skill Gaps
-      Questions         Questions
-            │                │                │
-            └────────────────┼────────────────┘
-                             ▼
-                    ┌──────────────────┐
-                    │ Preparation Roadmap│
-                    └────────┬─────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │ Interview Report│
-                    └──────────────────┘
+User
+ │
+ ▼
+Landing Page
+ │
+ ▼
+Register / Login
+ │
+ ▼
+Create Interview Plan
+ │
+ ├── Job Description
+ │
+ ├── Resume
+ │
+ └── Self Description
+ │
+ ▼
+Backend API
+ │
+ ▼
+AI Processing
+ │
+ ├── Technical Questions
+ │
+ ├── Behavioral Questions
+ │
+ ├── Skill Gap Analysis
+ │
+ └── Preparation Roadmap
+ │
+ ▼
+Interview Report
+ │
+ ├── Match Score
+ │
+ ├── Technical Questions
+ │
+ ├── Behavioral Questions
+ │
+ ├── Skill Gaps
+ │
+ └── Preparation Plan
+ │
+ ▼
+Candidate Preparation
 ```
 
 ---
 
-# Project Structure
+## Authentication Flow
+
+Interviewly AI uses JWT-based authentication to protect user-specific resources.
+
+```text
+Register
+   │
+   ▼
+Password Hashing
+   │
+   ▼
+User Stored in MongoDB
+   │
+   ▼
+Login
+   │
+   ▼
+Credentials Verified
+   │
+   ▼
+JWT Generated
+   │
+   ▼
+Authenticated Request
+   │
+   ▼
+Authentication Middleware
+   │
+   ▼
+Protected Resource
+```
+
+Passwords are hashed before being stored and protected resources require valid authentication.
+
+---
+
+## AI Interview Pipeline
+
+```text
+Job Description
+       │
+       ▼
+Candidate Profile
+       │
+       ▼
+Resume / Self Description
+       │
+       ▼
+AI Processing
+       │
+       ├───────────────┐
+       ▼               ▼
+Technical         Behavioral
+Questions         Questions
+       │               │
+       └───────┬───────┘
+               ▼
+       Skill Gap Analysis
+               │
+               ▼
+       Preparation Roadmap
+               │
+               ▼
+        Interview Report
+```
+
+The AI service processes the candidate's information and generates structured interview preparation content.
+
+---
+
+## Project Structure
 
 ```text
 Interviewly-AI/
@@ -296,131 +382,55 @@ Interviewly-AI/
 
 ---
 
-# API Architecture
+## API Architecture
 
-The backend follows a modular REST API architecture with separate routes, controllers, services, models, and middleware.
+The backend follows a modular REST API architecture.
 
-## Authentication APIs
+### Authentication
 
 | Method | Endpoint             | Description                     |
 | ------ | -------------------- | ------------------------------- |
-| `POST` | `/api/auth/register` | Register a new user             |
-| `POST` | `/api/auth/login`    | Authenticate a user             |
-| `GET`  | `/api/auth/get-me`   | Retrieve the authenticated user |
+| POST   | `/api/auth/register` | Register a new user             |
+| POST   | `/api/auth/login`    | Authenticate an existing user   |
+| GET    | `/api/auth/get-me`   | Retrieve the authenticated user |
 
-## Interview APIs
+### Interview
 
-| Method | Endpoint                    | Description                           |
-| ------ | --------------------------- | ------------------------------------- |
-| `POST` | `/api/interview`            | Generate an interview strategy        |
-| `GET`  | `/api/interview/:id`        | Retrieve an interview report          |
-| `GET`  | `/api/interview`            | Retrieve user's interview reports     |
-| `GET`  | `/api/interview/:id/resume` | Generate or download interview resume |
-
-> API endpoints may change as the application evolves.
+| Method | Endpoint                    | Description                     |
+| ------ | --------------------------- | ------------------------------- |
+| POST   | `/api/interview`            | Generate an interview plan      |
+| GET    | `/api/interview/:id`        | Retrieve an interview report    |
+| GET    | `/api/interview/:id/resume` | Generate or download the resume |
 
 ---
 
-# Authentication Flow
+## Environment Variables
 
-Interviewly AI uses JWT-based authentication for securing user-specific resources.
+Create a `.env` file inside the `Backend` directory.
 
-```text
-User
- │
- ▼
-Registration
- │
- ▼
-Password Hashing
- │
- ▼
-MongoDB
- │
- ▼
-Login
- │
- ▼
-Credential Verification
- │
- ▼
-JWT Generation
- │
- ▼
-Authenticated Request
- │
- ▼
-Authentication Middleware
- │
- ▼
-Protected Resource
+```env
+PORT=3000
+
+MONGO_URI=your_mongodb_connection_string
+
+JWT_SECRET=your_jwt_secret
+
+AI_API_KEY=your_ai_api_key
 ```
 
-### Security Measures
+Additional environment variables may be required depending on the AI service and current backend configuration.
 
-* Passwords are hashed using bcrypt.
-* JWT tokens are used for authentication.
-* Protected routes validate authenticated requests.
-* Sensitive configuration is stored using environment variables.
-* `.env` files are excluded from version control.
+### Security Note
 
----
+Never commit environment files or API keys to GitHub.
 
-# AI Interview Pipeline
-
-```text
-┌──────────────────────────┐
-│    Job Description       │
-└────────────┬─────────────┘
-             │
-             ▼
-┌──────────────────────────┐
-│ Candidate Profile/Resume │
-└────────────┬─────────────┘
-             │
-             ▼
-┌──────────────────────────┐
-│     Generative AI        │
-│     Analysis Pipeline    │
-└────────────┬─────────────┘
-             │
-             ▼
-┌──────────────────────────┐
-│ Technical Questions      │
-├──────────────────────────┤
-│ Behavioral Questions     │
-├──────────────────────────┤
-│ Model Answers            │
-├──────────────────────────┤
-│ Skill Gaps               │
-├──────────────────────────┤
-│ Match Score              │
-└────────────┬─────────────┘
-             │
-             ▼
-┌──────────────────────────┐
-│ Preparation Roadmap      │
-└──────────────────────────┘
-```
-
-The AI pipeline transforms job requirements and candidate information into structured, role-specific interview preparation content.
+Make sure `.env` is included in `.gitignore`.
 
 ---
 
-# Installation & Setup
+## Installation
 
-## Prerequisites
-
-Make sure the following are installed:
-
-* Node.js
-* npm
-* MongoDB or MongoDB Atlas
-* Git
-
----
-
-## 1. Clone the Repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Vaibhvee012/Interviewly-AI.git
@@ -428,259 +438,182 @@ git clone https://github.com/Vaibhvee012/Interviewly-AI.git
 cd Interviewly-AI
 ```
 
----
-
-## 2. Backend Setup
-
-Navigate to the backend:
+### 2. Backend Setup
 
 ```bash
 cd Backend
-```
 
-Install dependencies:
-
-```bash
 npm install
 ```
 
-Create a `.env` file inside the `Backend` directory:
+Create the `.env` file:
 
-```env
-PORT=8000
-
-MONGO_URI=your_mongodb_connection_string
-
-JWT_SECRET=your_jwt_secret
-
-AI_API_KEY=your_ai_api_key
+```text
+.env
 ```
 
-Start the backend:
+Add the required environment variables and start the backend:
 
 ```bash
 npm run dev
 ```
 
----
+### 3. Frontend Setup
 
-## 3. Frontend Setup
-
-Open a new terminal:
+Open another terminal:
 
 ```bash
 cd Frontend
-```
 
-Install dependencies:
-
-```bash
 npm install
 ```
 
-Start the development server:
+Start the frontend:
 
 ```bash
 npm run dev
 ```
 
-The frontend will be available at the local Vite development URL displayed in your terminal.
+The application will be available through the Vite development server.
 
 ---
 
-# Environment Variables
+## Deployment
 
-The backend requires environment variables for sensitive configuration.
+Interviewly AI is deployed as two separate services.
 
-```env
-PORT=8000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-AI_API_KEY=your_ai_api_key
-```
+### Frontend — Vercel
 
-### Important
+The React frontend is deployed using Vercel.
 
-Never commit `.env` files or API credentials to GitHub.
+**Live Application:**
+https://interviewly-ai-six.vercel.app/
 
-Make sure `.env` is included in `.gitignore`:
+### Backend — Render
 
-```gitignore
-.env
-node_modules/
-dist/
-```
+The Node.js and Express backend is deployed using Render.
+
+**Backend API:**
+https://interviewly-ai.onrender.com/
+
+The deployed frontend communicates with the deployed backend through REST APIs.
 
 ---
 
-# Development Workflow
+## Development Workflow
 
 ```text
-Feature Planning
-       │
-       ▼
-Implementation
-       │
-       ▼
-Local Testing
-       │
-       ▼
-API Testing with Postman
-       │
-       ▼
+Feature Development
+        │
+        ▼
+Local Development
+        │
+        ▼
+API Testing
+        │
+        ▼
 Frontend Integration
-       │
-       ▼
-Bug Fixing
-       │
-       ▼
+        │
+        ▼
+Application Testing
+        │
+        ▼
 Git Commit
-       │
-       ▼
+        │
+        ▼
 GitHub
-       │
-       ▼
-Deployment
+        │
+        ▼
+Vercel / Render Deployment
 ```
 
 ---
 
-# Error Handling
+## Security
 
-The application follows a structured approach to handling errors across the frontend and backend.
+The application implements several basic security practices:
 
-### Backend
-
-* Request validation
-* Authentication errors
-* Database errors
-* API errors
-* AI service errors
-* Centralized error handling
-
-### Frontend
-
-* Loading states
-* API error handling
-* Authentication failures
-* Form validation
-* User-friendly error messages
-
----
-
-# Security
-
-Interviewly AI follows several standard security practices:
-
-* Password hashing with bcrypt
+* Password hashing using bcrypt
 * JWT-based authentication
 * Protected API routes
-* Environment-based configuration
-* Sensitive credentials excluded from Git
-* Backend validation
 * Authentication middleware
+* Environment-based configuration
+* `.env` excluded from version control
+* Backend validation
+* Error handling
 * Separation of frontend and backend responsibilities
 
 ---
 
-# Deployment
+## Future Improvements
 
-The application is designed to support independent deployment of the frontend and backend.
-
-### Frontend
-
-The React application can be deployed using platforms such as:
-
-* Vercel
-* Netlify
-
-### Backend
-
-The Node.js/Express backend can be deployed using platforms such as:
-
-* Render
-* Railway
-* AWS
-
-### Database
-
-MongoDB Atlas can be used as the production database.
-
----
-
-# Future Enhancements
-
-Planned and potential improvements include:
+Planned improvements include:
 
 * Real-time AI interview conversations
-* Voice-based interview sessions
+* Voice-based interviews
 * Speech-to-text integration
-* Resume-driven question generation
+* AI-generated follow-up questions
 * Difficulty-based interview customization
 * Interview history and analytics
-* Candidate performance dashboards
+* Detailed candidate performance dashboards
 * Skill-wise performance tracking
-* AI-generated learning plans
-* Advanced interview scoring
+* Personalized learning recommendations
 * Docker containerization
-* AWS cloud deployment
-* CI/CD pipeline integration
-* Monitoring and observability
+* AWS deployment
+* CI/CD pipeline
+* Automated testing
 
 ---
 
-# Project Goals
+## Project Goals
 
-The primary goals of Interviewly AI are to:
+Interviewly AI was built with the following goals:
 
-1. Provide a realistic and personalized interview preparation environment.
-2. Use Generative AI to automate interview preparation.
-3. Provide structured and actionable candidate insights.
-4. Help candidates identify technical and behavioral skill gaps.
-5. Create personalized preparation roadmaps.
-6. Demonstrate a production-oriented full-stack architecture.
-7. Integrate modern web technologies with Generative AI.
+1. Provide a personalized interview preparation experience.
+2. Generate interview content based on real job requirements.
+3. Help candidates identify important skill gaps.
+4. Provide structured preparation recommendations.
+5. Integrate Generative AI into a practical full-stack application.
+6. Gain hands-on experience with modern web development and deployment.
+7. Build a project that demonstrates end-to-end application development.
 
 ---
 
-# Learning Outcomes
+## Learning Outcomes
 
-Developing Interviewly AI provided practical experience in:
+Developing Interviewly AI provided hands-on experience with:
 
-* Full-stack application development
+* Full-stack web development
 * React application architecture
 * REST API development
-* Node.js and Express.js
-* MongoDB and Mongoose
+* Express.js backend development
 * JWT authentication
 * Password hashing
-* API integration
+* MongoDB and Mongoose
+* File uploads
 * Generative AI integration
-* File upload handling
-* Frontend state management
-* Error handling
-* Git and GitHub workflows
-* Deployment architecture
+* API testing with Postman
+* Environment configuration
+* Git and GitHub
+* Vercel deployment
+* Render deployment
+* Frontend-backend integration
+* Production deployment and debugging
 
 ---
 
-# Author
+## Author
 
-## Vaibhvee Prakash
+**Vaibhvee Prakash**
 
-**Computer Science Engineering**
-**Cloud Computing and Automation**
+Computer Science Engineering
+Cloud Computing and Automation
 
-GitHub: [Vaibhvee012](https://github.com/Vaibhvee012)
-
----
-
-# License
-
-This project is developed for **educational, portfolio, and demonstration purposes**.
+**GitHub:**
+https://github.com/Vaibhvee012
 
 ---
 
-<p align="center">
-  Built with React, Node.js, MongoDB and Generative AI.
-</p>
+## License
+
+This project was developed for educational, portfolio, and demonstration purposes.
