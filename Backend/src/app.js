@@ -6,7 +6,9 @@ const app = express()
 
 const allowedOrigins = [
     "http://localhost:5173",
+    "http://localhost:5174",
     "https://interviewly-ai-zeta.vercel.app",
+    "https://interviewly-qc7ocugus-vibe-7cbc.vercel.app",
 ]
 
 app.use(
