@@ -2,13 +2,21 @@
 
 **Interviewly AI** is an AI-powered interview preparation platform that helps candidates prepare for technical and behavioral interviews through personalized questions, skill-gap analysis, and structured preparation plans.
 
-## Live Application
+Deployment
 
-**Frontend:**
-https://interviewly-ai-six.vercel.app/
+Interviewly AI is deployed using Vercel for the frontend and Render for the backend.
 
-**Backend API:**
+Frontend
+
+Live Application:
+https://interviewly-ai-zeta.vercel.app/
+
+Backend
+
+Backend API:
 https://interviewly-ai.onrender.com/
+
+The frontend communicates with the backend through REST APIs.
 
 The frontend is deployed on **Vercel**, while the backend API is deployed on **Render**.
 
