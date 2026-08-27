@@ -2,20 +2,24 @@
 
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
-    withCredentials: true, // kept as a fallback; harmless alongside the Bearer token
+    withCredentials: true,
 })
 
-// Attach the stored token to every outgoing request, if present.
 api.interceptors.request.use((config) => {
     const token = localStorage.getItem("jwt_token")
+
     if (token) {
         config.headers.Authorization = `Bearer ${token}`
     }
+
     return config
 })
 
 export const login = async ({ email, password }) => {
-    const response = await api.post("/api/auth/login", { email, password })
+    const response = await api.post("/api/auth/login", {
+        email,
+        password,
+    })
 
     if (response.data?.token) {
         localStorage.setItem("jwt_token", response.data.token)
@@ -25,7 +29,11 @@ export const login = async ({ email, password }) => {
 }
 
 export const register = async ({ username, email, password }) => {
-    const response = await api.post("/api/auth/register", { username, email, password })
+    const response = await api.post("/api/auth/register", {
+        username,
+        email,
+        password,
+    })
 
     if (response.data?.token) {
         localStorage.setItem("jwt_token", response.data.token)
@@ -36,7 +44,9 @@ export const register = async ({ username, email, password }) => {
 
 export const logout = async () => {
     const response = await api.post("/api/auth/logout")
+
     localStorage.removeItem("jwt_token")
+
     return response.data
 }
 
