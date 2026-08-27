@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon server.js",
-    "start": "node server.js",
-    "postinstall": "puppeteer browsers install chrome"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
