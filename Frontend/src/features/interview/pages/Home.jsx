@@ -1,13 +1,9 @@
 import React, { useState, useRef } from "react"
-
 import "../style/home.scss"
-
 import { useInterview } from "../hooks/useInterview"
-
 import { useNavigate } from "react-router"
 
 const Home = () => {
-
     const { loading, generateReport, reports } = useInterview()
 
     const [jobDescription, setJobDescription] = useState("")
@@ -15,55 +11,41 @@ const Home = () => {
     const [loadingPlan, setLoadingPlan] = useState(false)
 
     const resumeInputRef = useRef()
-
     const navigate = useNavigate()
 
+    // Generate a new interview plan
     const handleGenerateReport = async () => {
+        setLoadingPlan(true)
 
-        const resumeFile = resumeInputRef.current.files[0]
+        try {
+            const resumeFile = resumeInputRef.current?.files[0]
 
-        const data = await generateReport({
-            jobDescription,
-            selfDescription,
-            resumeFile
-        })
+            const data = await generateReport({
+                jobDescription,
+                selfDescription,
+                resumeFile
+            })
 
-        if (!data) {
-            return
+            if (!data) {
+                setLoadingPlan(false)
+                return
+            }
+
+            navigate(`/interview/${data._id}`)
+        } catch (error) {
+            console.error("Failed to generate interview plan:", error)
+            setLoadingPlan(false)
         }
-
-        navigate(`/interview/${data._id}`)
     }
 
-    if (loading) {
-        return (
-            <main
-                className="loading-container"
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center"
-                }}
-            >
-                <h2>LOADING YOUR INTERVIEW PLAN</h2>
-
-                <div
-                    className="loading-dots"
-                    style={{
-                        display: "flex",
-                        gap: "8px",
-                        marginTop: "12px"
-                    }}
-                >
-                    <span>●</span>
-                    <span>●</span>
-                    <span>●</span>
-                </div>
-            </main>
-        )
+    // Loading screen for opening an existing interview plan
+    const handleOpenReport = (reportId) => {
+        setLoadingPlan(true)
+        navigate(`/interview/${reportId}`)
     }
 
+    // IMPORTANT:
+    // Only use loadingPlan for the interview-plan loading screen.
     if (loadingPlan) {
         return (
             <main
@@ -100,7 +82,9 @@ const Home = () => {
             <header className="page-header">
                 <h1>
                     Create Your Custom{" "}
-                    <span className="highlight">Interview Plan</span>
+                    <span className="highlight">
+                        Interview Plan
+                    </span>
                 </h1>
 
                 <p>
@@ -159,6 +143,7 @@ const Home = () => {
                             }}
                             className="panel__textarea"
                             placeholder={`Paste the full job description here...
+
 e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScript, and large-scale system design...'`}
                             maxLength={5000}
                         />
@@ -220,6 +205,7 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
                             >
 
                                 <span className="dropzone__icon">
+
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="28"
@@ -242,6 +228,7 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
 
                                         <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" />
                                     </svg>
+
                                 </span>
 
                                 <p className="dropzone__title">
@@ -297,6 +284,7 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
                         <div className="info-box">
 
                             <span className="info-box__icon">
+
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
@@ -328,6 +316,7 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
                                         strokeWidth="2"
                                     />
                                 </svg>
+
                             </span>
 
                             <p>
@@ -352,6 +341,7 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
                     <button
                         onClick={handleGenerateReport}
                         className="generate-btn"
+                        disabled={loadingPlan}
                     >
 
                         <svg
@@ -386,10 +376,7 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
                             <li
                                 key={report._id}
                                 className="report-item"
-                                onClick={() => {
-                                    setLoadingPlan(true)
-                                    navigate(`/interview/${report._id}`)
-                                }}
+                                onClick={() => handleOpenReport(report._id)}
                             >
 
                                 <h3>
@@ -427,9 +414,19 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
 
             {/* Page Footer */}
             <footer className="page-footer">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Help Center</a>
+
+                <a href="#">
+                    Privacy Policy
+                </a>
+
+                <a href="#">
+                    Terms of Service
+                </a>
+
+                <a href="#">
+                    Help Center
+                </a>
+
             </footer>
 
         </div>
@@ -437,3 +434,4 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
 }
 
 export default Home
+
